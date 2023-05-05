@@ -13,5 +13,6 @@ public class WeaponSettingsEditor : Editor
         if (_script.shootingType == ShootingType.Auto)
             _script.shootingDelay = EditorGUILayout.Slider("Задержка между выстрелами", _script.shootingDelay, 0.01f, 0.3f);
         _script.shootingRange = EditorGUILayout.IntSlider("Расстояние выстрела", _script.shootingRange, 50, 500);
+        _script.maxAmmo = EditorGUILayout.IntField("Кол-во патрон в обойме", _script.maxAmmo);
     }
 }
