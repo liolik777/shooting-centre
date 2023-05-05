@@ -23,20 +23,4 @@ public class GameMenu : Editor
         ScreenCapture.CaptureScreenshot(fileName);
         Debug.Log($"<color=#FF7100>Скриншот сохранён в папке проекта с названием:</color> {fileName}");
     }
-
-    [MenuItem("Игра/Подготовить проект")]
-    private static void PrepareProject()
-    {
-        if (EditorUtility.DisplayDialog("Подтверждение создания", "Это создаст папки проекта.\nЕсли они уже созданы, то нажмите \"Отмена\"", "Подтвердить", "Отмена"))
-        {
-            AssetDatabase.CreateFolder("Assets", "Resources");
-            AssetDatabase.CreateFolder("Assets", "Scripts");
-            AssetDatabase.CreateFolder("Assets/Scripts", "Editor");
-            AssetDatabase.CreateFolder("Assets/Resources", "Sprites");
-            AssetDatabase.CreateFolder("Assets/Resources", "Audio");
-            AssetDatabase.CreateFolder("Assets/Resources", "Animations");
-            AssetDatabase.CreateFolder("Assets/Resources", "Prefabs");
-            Debug.Log($"<color=#FF7100>Папки проекта успешно созданы!</color>");
-        }
-    }
 }
