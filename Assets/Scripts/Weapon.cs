@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using Valve.VR;
+using TMPro;
 
 public enum ShootingType
 {
@@ -10,12 +11,31 @@ public enum ShootingType
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private WeaponSettings weaponSettings;
-    [SerializeField] private Transform firePoint;
+    public WeaponSettings weaponSettings;
+    public Transform firePoint;
+    public TMP_Text ammoText;
+    public string ammoTextFormat;
+    private int _ammoStock;
+    private int _ammo;
 
     private void Update()
     {
-        if (GameSettings.Instance.gameSettings.fireAction.GetStateDown(SteamVR_Input_Sources.Any) || Input.GetKeyDown(GameSettings.Instance.gameSettings.fireButton))
+        if (GameSettings.Instance.gameSettings.isControllerInput)
+        {
+            if (GameSettings.Instance.gameSettings.fireAction.GetStateDown(SteamVR_Input_Sources.Any))
+                StartShoot();
+            if (GameSettings.Instance.gameSettings.reloadAction.GetStateDown(SteamVR_Input_Sources.Any))
+                Reload();
+        }
+        else
+        {
+            if (Input.GetKeyDown(GameSettings.Instance.gameSettings.fireButton))
+                StartShoot();
+            if (Input.GetKeyDown(GameSettings.Instance.gameSettings.reloadButton))
+                Reload();
+        }
+
+        void StartShoot()
         {
             if (weaponSettings.shootingType == ShootingType.Single)
                 Shoot();
@@ -33,12 +53,22 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    [ContextMenu("Выстрелить")]
-    private void Shoot()
+    private void UpdateUI()
     {
-        if (weaponSettings == null)
+        if (ammoText == null)
             return;
 
+        ammoText.text = string.Format(ammoTextFormat, _ammo, _ammoStock, weaponSettings.maxAmmo);
+    }
+
+    [ContextMenu("Выстрелить")]
+    public void Shoot()
+    {
+        if (weaponSettings == null || _ammo <= 0)
+            return;
+
+        _ammo--;
+        UpdateUI();
         if (GameSettings.Instance.gameSettings.shootingEffect != null)
             Instantiate(GameSettings.Instance.gameSettings.shootingEffect, firePoint.position, firePoint.rotation);
         RaycastHit hit;
@@ -46,6 +76,25 @@ public class Weapon : MonoBehaviour
         {
             Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal));
         }
+    }
+
+    [ContextMenu("Перезарядиться")]
+    public void Reload()
+    {
+        if (_ammoStock <= 0)
+            return;
+
+        if (_ammo + _ammoStock >= weaponSettings.maxAmmo)
+        {
+            _ammoStock -= weaponSettings.maxAmmo - _ammo;
+            _ammo = weaponSettings.maxAmmo;
+        }
+        else
+        {
+            _ammoStock = 0;
+            _ammo += _ammoStock;
+        }
+        UpdateUI();
     }
 
     public void OnDrawGizmosSelected()
