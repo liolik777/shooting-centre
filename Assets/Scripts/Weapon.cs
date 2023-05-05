@@ -58,8 +58,13 @@ public class Weapon : MonoBehaviour
         if (ammoText == null)
             return;
 
-        ammoText.text = string.Format(ammoTextFormat, _ammo, _ammoStock, weaponSettings.maxAmmo);
+        ammoText.text = string.Format(ammoTextFormat, _ammo, weaponSettings.maxAmmo, _ammoStock);
     }
+
+	public void AddAmmoStock(int ammoToAdd)
+	{
+		_ammoStock += ammoToAdd;
+	}
 
     [ContextMenu("Выстрелить")]
     public void Shoot()
