@@ -15,10 +15,10 @@ public class OlgaGreetings : EditorWindow
 	{
 		EditorGUILayout.BeginVertical("box");
 		EditorGUILayout.LabelField("О, Ольга, добро пожаловать в проект \"Shooting center\"!", EditorStyles.boldLabel);
-		EditorGUILayout.LabelField("Unity будет стараться сделать всё возможное, чтобы облегчить вашу работу.");
-		EditorGUILayout.LabelField("Клянусь свято выполнять ваши приказы.");
-		EditorGUILayout.LabelField("Клянусь не лагать, не вылетать и отображать всё корректно.");
-		EditorGUILayout.LabelField("Приятного времяпрепровождения.", EditorStyles.boldLabel);
+		EditorGUILayout.LabelField("Unity будет стараться сделать всё возможное, чтобы облегчить вашу работу");
+		EditorGUILayout.LabelField("Клянусь свято выполнять ваши приказы");
+		EditorGUILayout.LabelField("Клянусь не лагать, не вылетать и отображать всё корректно");
+		EditorGUILayout.LabelField("Приятного времяпрепровождения", EditorStyles.boldLabel);
 		EditorGUILayout.EndVertical();
 	}
 }
