@@ -77,10 +77,10 @@ public class Weapon : MonoBehaviour
         if (GameSettings.Instance.gameSettings.shootingEffect != null)
             Instantiate(GameSettings.Instance.gameSettings.shootingEffect, firePoint.position, firePoint.rotation);
         RaycastHit hit;
-        if (Physics.Raycast(firePoint.position, firePoint.position + firePoint.forward, out hit, weaponSettings.shootingRange, 3))
+        if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, weaponSettings.shootingRange, 3))
         {
             Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-			int score = hit.gameObject.GetComponent<Target>().GetScore(hit.point);
+			int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
 			Debug.Log(score);
         }
     }
@@ -104,9 +104,9 @@ public class Weapon : MonoBehaviour
         UpdateUI();
     }
 
-    public void OnDrawGizmosSelected()
+    public void OnDrawGizmos()
     {
         if (weaponSettings != null && firePoint != null)
-            Debug.DrawRay(firePoint.position, firePoint.position + firePoint.forward, Color.red);
+            Debug.DrawRay(firePoint.position, firePoint.forward * weaponSettings.shootingRange, Color.red);
     }
 }
