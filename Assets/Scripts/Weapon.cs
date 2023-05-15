@@ -80,6 +80,8 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(firePoint.position, firePoint.position + firePoint.forward, out hit, weaponSettings.shootingRange, 3))
         {
             Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+			int score = hit.gameObject.GetComponent<Target>().GetScore(hit.point);
+			Debug.Log(score);
         }
     }
 
