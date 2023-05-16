@@ -11,10 +11,10 @@ public class Target : MonoBehaviour
 	[SerializeField] private float debugAngle;
 	[SerializeField] private Color debugColor;
 #endif
+	
 	public int GetScore(Vector3 hitPoint)
 	{
 		float distance = Vector3.Distance(hitPoint, center.position);
-		Debug.Log(distance);
 		
 		int ring = -1;
 		if (distance / intervalBtwRings > Mathf.Floor(distance / intervalBtwRings))
