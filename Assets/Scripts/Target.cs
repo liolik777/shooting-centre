@@ -9,7 +9,6 @@ public class Target : MonoBehaviour
 #if UNITY_EDITOR
 	[SerializeField] private bool enableDebug = true;
 	[SerializeField] private float debugAngle;
-	[SerializeField] private Color debugColor;
 #endif
 	
 	public int GetScore(Vector3 hitPoint)
@@ -34,7 +33,7 @@ public class Target : MonoBehaviour
 			{
 				float angle = j * angleStep;
 				Vector3 nextPoint = center.position + Quaternion.Euler(0f, debugAngle, angle) * Vector3.right * intervalBtwRings * (i + 1) - center.right * 0.1f;
-				Debug.DrawLine(previousPoint, nextPoint, debugColor);
+				Debug.DrawLine(previousPoint, nextPoint, Color.red);
 				previousPoint = nextPoint;
 			}
 		}

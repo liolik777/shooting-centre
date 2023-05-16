@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 483253540125484261}
   - component: {fileID: 455006187408363166}
   m_Layer: 3
-  m_Name: Military target (4)
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
