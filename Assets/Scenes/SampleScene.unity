@@ -306,14 +306,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 450434852609574409, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 46.600277
-      objectReference: {fileID: 0}
-    - target: {fileID: 450434852609574409, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 45.584473
-      objectReference: {fileID: 0}
-    - target: {fileID: 450434852609574409, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -34.15
       objectReference: {fileID: 0}
@@ -353,17 +345,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
-    - target: {fileID: 455006186566700950, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 456504643543961199, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Name
       value: Military target (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 456504643543961199, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
@@ -434,6 +418,10 @@ PrefabInstance:
     - target: {fileID: 455006186566700950, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 455006187408363166, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
+      propertyPath: enableDebug
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 456504643543961199, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Name
@@ -513,6 +501,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 455006187408363166, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
+      propertyPath: enableDebug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 456504643543961199, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Name
       value: Military target (5)
@@ -590,6 +582,10 @@ PrefabInstance:
     - target: {fileID: 455006186566700950, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 455006187408363166, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
+      propertyPath: enableDebug
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 456504643543961199, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Name
@@ -765,6 +761,10 @@ PrefabInstance:
     - target: {fileID: 455006186566700950, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 455006187408363166, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
+      propertyPath: enableDebug
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 456504643543961199, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Name
@@ -1474,6 +1474,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 455006187408363166, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
+      propertyPath: enableDebug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 456504643543961199, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Name
       value: Military target (1)
@@ -2056,6 +2060,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 455006187408363166, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
+      propertyPath: enableDebug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 456504643543961199, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Name
       value: Military target (2)
@@ -2286,6 +2294,10 @@ PrefabInstance:
     - target: {fileID: 455006186566700950, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 455006187408363166, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
+      propertyPath: enableDebug
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 456504643543961199, guid: 9491826ddcdf2d346850eaaf1914b6a7, type: 3}
       propertyPath: m_Name

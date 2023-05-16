@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455006186566700937}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 433381705174271271}
   - component: {fileID: 483253540125484261}
   - component: {fileID: 455006187408363166}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Military target (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,9 +58,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456504643543961199}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: 0, y: -0.70710677, z: 0.70710677, w: 0}
   m_LocalPosition: {x: -16, y: 0, z: 0}
-  m_LocalScale: {x: 46.60027, y: 1, z: 45.58448}
+  m_LocalScale: {x: 46.600277, y: 1, z: 45.584473}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 455006186566700937}
@@ -146,6 +146,6 @@ MonoBehaviour:
   center: {fileID: 455006186566700937}
   intervalBtwRings: 0.09
   scores: 0a000000090000000800000007000000060000000500000004000000030000000200000001000000
-  enableDebug: 1
+  enableDebug: 0
   debugAngle: 0
   debugColor: {r: 1, g: 0, b: 0, a: 1}
