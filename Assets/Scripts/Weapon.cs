@@ -81,7 +81,7 @@ public class Weapon : MonoBehaviour
         {
             Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal));
 			int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
-			Debug.Log(score);
+			Debug.Log("Your score is: " + score);
         }
     }
 
