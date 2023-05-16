@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public Transform center;
+    [SerializeField] private Transform center;
 	[SerializeField] private float intervalBtwRings;
 	[SerializeField] private List<int> scores;
 #if UNITY_EDITOR
@@ -15,13 +15,7 @@ public class Target : MonoBehaviour
 	public int GetScore(Vector3 hitPoint)
 	{
 		float distance = Vector3.Distance(hitPoint, center.position);
-		
-		int ring = -1;
-		if (distance / intervalBtwRings > Mathf.Floor(distance / intervalBtwRings))
-			ring = (int)Mathf.Floor(distance / intervalBtwRings) + 1;
-		else
-			ring = (int)Mathf.Floor(distance / intervalBtwRings);
-		
+		int ring = (int)Mathf.Floor(distance / intervalBtwRings);
 		int score = scores[ring];
 		return score;
 	}
