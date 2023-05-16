@@ -9,6 +9,9 @@ ModelImporter:
   - first:
       1001: 100100000
     second: DataTemplate __Singleton__
+  - first:
+      74: 1989289236423521904
+    second: Default Take
   externalObjects: {}
   materials:
     materialImportMode: 1

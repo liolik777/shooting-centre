@@ -29,11 +29,11 @@ public class Target : MonoBehaviour
 		float angleStep = 360f / numSegments;
 		for (int i = 0; i < scores.Count; i++)
         {
-			Vector3 previousPoint = center.position + Quaternion.Euler(0f, debugAngle, 0f) * Vector3.right * intervalBtwRings * i - center.right * 0.1f;
+			Vector3 previousPoint = center.position + Quaternion.Euler(0f, debugAngle, 0f) * Vector3.right * intervalBtwRings * (i + 1) - center.right * 0.1f;
 			for (int j = 1; j <= numSegments; j++)
 			{
 				float angle = j * angleStep;
-				Vector3 nextPoint = center.position + Quaternion.Euler(0f, debugAngle, angle) * Vector3.right * intervalBtwRings * i - center.right * 0.1f;
+				Vector3 nextPoint = center.position + Quaternion.Euler(0f, debugAngle, angle) * Vector3.right * intervalBtwRings * (i + 1) - center.right * 0.1f;
 				Debug.DrawLine(previousPoint, nextPoint, debugColor);
 				previousPoint = nextPoint;
 			}
