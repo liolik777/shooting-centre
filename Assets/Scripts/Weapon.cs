@@ -75,11 +75,11 @@ public class Weapon : MonoBehaviour
         _ammo--;
         UpdateUI();
         if (GameSettings.Instance.gameSettings.shootingEffect != null)
-            Instantiate(GameSettings.Instance.gameSettings.shootingEffect, firePoint.position, firePoint.rotation);
+			Instantiate(GameSettings.Instance.gameSettings.shootingEffect, firePoint.position, firePoint.rotation);
         RaycastHit hit;
-        if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, weaponSettings.shootingRange, 3))
+        if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, weaponSettings.shootingRange))
         {
-            Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+            Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
 			int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
 			Debug.Log("Your score is: " + score);
         }

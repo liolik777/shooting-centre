@@ -22,6 +22,9 @@ public class MovableTarget : Target
 
     private void OnDrawGizmosSelected()
     {
+		if (startPosition == null || endPosition == null)
+			return;
+		
         Debug.DrawLine(startPosition.position, endPosition.position, Color.red);
     }
 }

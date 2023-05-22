@@ -11,7 +11,7 @@ public class Target : MonoBehaviour
 	[SerializeField] private float debugAngle;
 #endif
 	
-	public int GetScore(Vector3 hitPoint)
+	public virtual int GetScore(Vector3 hitPoint)
 	{
 		float distance = Vector3.Distance(hitPoint, center.position);
 		int ring = (int)Mathf.Floor(distance / intervalBtwRings);
