@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0f62ccbe8049f742b8eaeca762f193e, type: 3}
-  m_Name: New Weapon Settings
+  m_Name: AK47
   m_EditorClassIdentifier: 
   shootingType: 0
   shootingDelay: 0.1
