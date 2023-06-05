@@ -18,5 +18,8 @@ public class GameSettingsInfoEditor : Editor
         string[] directories = assetPath.Split('/');
         if (directories.Length != 3 || directories[1] != "Resources")
             EditorGUILayout.HelpBox("Ђссет должен находиться по пути:  \"Resources/GameSettings\"", MessageType.Error);
+		
+		if (!_script.weaponFormatText.Contains("{0}") || !_script.weaponFormatText.Contains("{1}"))
+			EditorGUILayout.HelpBox("Формат должен содержать элементы {0}(текущие патроны), {1}(максимальное количество патрон в магазине)", MessageType.Error);
     }
 }

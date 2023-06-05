@@ -9,5 +9,6 @@ public class GameSettingsInfo : ScriptableObject
     public GameObject dentPrefab;
     public KeyCode fireButton;
     public bool isControllerInput;
+	public string weaponFormatText = "";
 }
 

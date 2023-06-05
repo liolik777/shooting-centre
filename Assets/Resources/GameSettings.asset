@@ -18,3 +18,5 @@ MonoBehaviour:
     needsReinit: 0
   dentPrefab: {fileID: 6589300572520042365, guid: 7cf9bbef08540964290542f027b84d57, type: 3}
   fireButton: 32
+  isControllerInput: 0
+  weaponFormatText: '{0}/{1}'

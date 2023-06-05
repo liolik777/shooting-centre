@@ -14,7 +14,6 @@ public class Weapon : MonoBehaviour
     public WeaponSettings weaponSettings;
     public Transform firePoint;
     public TMP_Text ammoText;
-    public string ammoTextFormat;
     private Clip _clip;
 
 	public  void InjectClip(Clip clip)
@@ -63,7 +62,7 @@ public class Weapon : MonoBehaviour
         if (ammoText == null || _clip == null)
             return;
 
-        ammoText.text = string.Format(ammoTextFormat, _clip.Ammo, _clip.MaxAmmo);
+        ammoText.text = string.Format(GameSettings.Instance.gameSettings.weaponFormatText, _clip.Ammo, _clip.MaxAmmo);
     }
 
     [ContextMenu("Выстрелить")]
@@ -81,9 +80,9 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, weaponSettings.shootingRange))
         {
+			Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
 			if (hit.collider.CompareTag("Target"))
 			{
-				Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
 				int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
 				Debug.Log("Your score is: " + score);
 			}
