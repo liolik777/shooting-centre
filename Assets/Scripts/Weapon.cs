@@ -15,8 +15,17 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     public TMP_Text ammoText;
     public string ammoTextFormat;
-    private int _ammoStock;
-    private int _ammo;
+    private Clip _clip;
+
+	public  void InjectClip(Clip clip)
+	{
+		_clip = clip;
+	}
+
+	public  void EjectClip()
+	{
+		_clip = null;
+	}
 
     private void Update()
     {
@@ -24,15 +33,11 @@ public class Weapon : MonoBehaviour
         {
             if (GameSettings.Instance.gameSettings.fireAction.GetStateDown(SteamVR_Input_Sources.Any))
                 StartShoot();
-            if (GameSettings.Instance.gameSettings.reloadAction.GetStateDown(SteamVR_Input_Sources.Any))
-                Reload();
         }
         else
         {
             if (Input.GetKeyDown(GameSettings.Instance.gameSettings.fireButton))
                 StartShoot();
-            if (Input.GetKeyDown(GameSettings.Instance.gameSettings.reloadButton))
-                Reload();
         }
 
         void StartShoot()
@@ -55,53 +60,34 @@ public class Weapon : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (ammoText == null)
+        if (ammoText == null || _clip == null)
             return;
 
-        ammoText.text = string.Format(ammoTextFormat, _ammo, weaponSettings.maxAmmo, _ammoStock);
+        ammoText.text = string.Format(ammoTextFormat, _clip.Ammo, _clip.MaxAmmo);
     }
-
-	public void AddAmmoStock(int ammoToAdd)
-	{
-		_ammoStock += ammoToAdd;
-	}
 
     [ContextMenu("Выстрелить")]
     public void Shoot()
     {
-        if (weaponSettings == null || _ammo <= 0)
+        if (weaponSettings == null || _clip == null)
             return;
+		if (_clip.Ammo <= 0)
+			return;
 
-        _ammo--;
+        _clip.Ammo--;
         UpdateUI();
         if (GameSettings.Instance.gameSettings.shootingEffect != null)
 			Instantiate(GameSettings.Instance.gameSettings.shootingEffect, firePoint.position, firePoint.rotation);
         RaycastHit hit;
         if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, weaponSettings.shootingRange))
         {
-            Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
-			int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
-			Debug.Log("Your score is: " + score);
+			if (hit.collider.CompareTag("Target"))
+			{
+				Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
+				int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
+				Debug.Log("Your score is: " + score);
+			}
         }
-    }
-
-    [ContextMenu("Перезарядиться")]
-    public void Reload()
-    {
-        if (_ammoStock <= 0)
-            return;
-
-        if (_ammo + _ammoStock >= weaponSettings.maxAmmo)
-        {
-            _ammoStock -= weaponSettings.maxAmmo - _ammo;
-            _ammo = weaponSettings.maxAmmo;
-        }
-        else
-        {
-            _ammoStock = 0;
-            _ammo += _ammoStock;
-        }
-        UpdateUI();
     }
 
     public void OnDrawGizmos()

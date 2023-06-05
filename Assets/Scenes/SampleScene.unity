@@ -621,10 +621,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2783759416032903479, guid: b77e6a9f78c78f34abcd32b731b8929a, type: 3}
-      propertyPath: handFollowTransform
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6029597317902005442, guid: b77e6a9f78c78f34abcd32b731b8929a, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -672,10 +668,6 @@ PrefabInstance:
     - target: {fileID: 6406016960211070584, guid: b77e6a9f78c78f34abcd32b731b8929a, type: 3}
       propertyPath: m_Name
       value: AK47
-      objectReference: {fileID: 0}
-    - target: {fileID: 6816320442960260231, guid: b77e6a9f78c78f34abcd32b731b8929a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b77e6a9f78c78f34abcd32b731b8929a, type: 3}
@@ -1462,7 +1454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3251,7 +3243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1202102494072525587, guid: a2b9d37eaf936cf47bbf166cfce34f2a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15062207
+      value: 0.15062208
       objectReference: {fileID: 0}
     - target: {fileID: 1202102494072525587, guid: a2b9d37eaf936cf47bbf166cfce34f2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

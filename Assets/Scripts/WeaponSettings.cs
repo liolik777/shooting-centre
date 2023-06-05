@@ -6,5 +6,4 @@ public class WeaponSettings : ScriptableObject
     public ShootingType shootingType;
     public float shootingDelay = 0.1f;
     public int shootingRange = 20;
-    public int maxAmmo = 30;
 }
