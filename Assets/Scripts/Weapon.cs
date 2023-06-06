@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     public TMP_Text ammoText;
     private Clip _clip;
+    private bool _shutterIsDistorted;
 
 	public  void InjectClip(Clip clip)
 	{
@@ -26,6 +27,17 @@ public class Weapon : MonoBehaviour
 		_clip = null;
 	}
 
+    public void DistorteShutter()
+    {
+        if (_clip == null && _shutterIsDistorted)
+            _shutterIsDistorted = false;
+        if (_clip != null)
+        {
+            _shutterIsDistorted = true;
+            _clip.Ammo--;
+        }
+    }
+    
     private void Update()
     {
         if (GameSettings.Instance.gameSettings.isControllerInput)
@@ -68,24 +80,38 @@ public class Weapon : MonoBehaviour
     [ContextMenu("Выстрелить")]
     public void Shoot()
     {
+        if (_clip == null && _shutterIsDistorted)
+        {
+            SubShoot();
+            _shutterIsDistorted = false;
+        }
+        
         if (weaponSettings == null || _clip == null)
             return;
-		if (_clip.Ammo <= 0)
+		if (_clip.Ammo <= 0 || !_shutterIsDistorted)
 			return;
 
         _clip.Ammo--;
-        UpdateUI();
-        if (GameSettings.Instance.gameSettings.shootingEffect != null)
-			Instantiate(GameSettings.Instance.gameSettings.shootingEffect, firePoint.position, firePoint.rotation);
-        RaycastHit hit;
-        if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, weaponSettings.shootingRange))
+        if (_clip.Ammo == 0)
+            _shutterIsDistorted = false;
+        SubShoot();
+
+        void SubShoot()
         {
-			Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
-			if (hit.collider.CompareTag("Target"))
-			{
-				int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
-				Debug.Log("Your score is: " + score);
-			}
+            Debug.Log("Shoot");
+            UpdateUI();
+            if (GameSettings.Instance.gameSettings.shootingEffect != null)
+                Instantiate(GameSettings.Instance.gameSettings.shootingEffect, firePoint.position, firePoint.rotation);
+            RaycastHit hit;
+            if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, weaponSettings.shootingRange))
+            {
+                Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
+                if (hit.collider.CompareTag("Target"))
+                {
+                    int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
+                    Debug.Log("Your score is: " + score);
+                }
+            }
         }
     }
 
