@@ -15,7 +15,6 @@ public class WeaponBolt : MonoBehaviour
 	private void Start()
 	{
 		body.onDetachedFromHand += OnDetachedFromHand;
-		body.onAttachedToHand += OnAttachedToHand;
 	}
 	
 	private void OnDetachedFromHand(Hand hand)
@@ -31,11 +30,6 @@ public class WeaponBolt : MonoBehaviour
 					bodyTransform.position = value;
 					linearMapping.value = CalculateLinearMapping(bodyTransform);
 				});
-	}
-	
-	private void OnAttachedToHand(Hand hand)
-	{
-		
 	}
 	
 	private float CalculateLinearMapping(Transform updateTransform)
