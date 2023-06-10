@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2335311714530044619}
   - component: {fileID: 4677922736107827406}
   - component: {fileID: 5641028251380316994}
+  - component: {fileID: 1458434755025513402}
   m_Layer: 0
   m_Name: StaticTarget
   m_TagString: Untagged
@@ -119,6 +120,24 @@ MonoBehaviour:
   scores: 090000000800000007000000060000000500000004000000030000000200000001000000
   enableDebug: 0
   debugAngle: 0
+--- !u!114 &1458434755025513402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4280757008391506718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be856aaf61434580bdab32c1eecf8cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {fileID: 4337013020690869234}
+  intervalBtwRings: 0.11
+  scores: 090000000800000007000000060000000500000004000000030000000200000001000000
+  enableDebug: 0
+  debugAngle: 0
+  scoreboard: {fileID: 0}
 --- !u!1 &5443667349013748541
 GameObject:
   m_ObjectHideFlags: 0

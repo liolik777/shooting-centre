@@ -15,7 +15,7 @@ public class MovableTarget : Target
         SmoothMove();
     }
 
-    public override int GetScore(Vector3 hitPoint)
+    public override int GetScore(Vector3 hitPoint, Transform centerPoint = null)
     {
         int score = base.GetScore(hitPoint);
         if (scoreboard != null)

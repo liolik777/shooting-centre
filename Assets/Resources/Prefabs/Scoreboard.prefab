@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3697413229946360558}
   - component: {fileID: 351283156399643979}
   - component: {fileID: 2523411494685092225}
+  - component: {fileID: 6335413047781820925}
   m_Layer: 0
   m_Name: Scoreboard
   m_TagString: Untagged
@@ -25,10 +26,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4036361141972633684}
-  m_LocalRotation: {x: -0.49964863, y: 0.50035113, z: 0.50035125, w: 0.49964857}
+  m_LocalRotation: {x: -0.49964648, y: 0.50035334, z: 0.50035334, w: 0.49964648}
   m_LocalPosition: {x: 9.76, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 43.9992, z: 28.5435}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 11.7, y: 64.34883, z: 41.74487}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 795567729946899815}
   m_Father: {fileID: 0}
@@ -85,6 +86,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6335413047781820925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036361141972633684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a6cd9bdbdd42deb3433f657590a6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 3232817332964710989}
 --- !u!1 &5874240283617739985
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

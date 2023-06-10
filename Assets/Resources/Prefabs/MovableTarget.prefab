@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7787452540002202203}
   - component: {fileID: 4199462471599746242}
-  - component: {fileID: 4293564826774928117}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -107,14 +106,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4293564826774928117
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6212594904757096612}
-  m_Enabled: 1
 --- !u!1 &8349023408773396720
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +217,7 @@ GameObject:
   - component: {fileID: 333202050886756870}
   m_Layer: 0
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,6 +322,7 @@ MonoBehaviour:
   scores: 090000000800000007000000060000000500000004000000030000000200000001000000
   enableDebug: 0
   debugAngle: 0
+  scoreboard: {fileID: 0}
   linearMapping: {fileID: 0}
   speed: 5
   startPosition: {fileID: 8349023409710993794}

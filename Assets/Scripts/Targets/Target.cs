@@ -10,9 +10,14 @@ public class Target : MonoBehaviour
 	[SerializeField] private bool enableDebug = true;
 	[SerializeField] private float debugAngle;
 
-	public virtual int GetScore(Vector3 hitPoint)
+	protected Transform Center => center;
+	protected bool EnableDebug => enableDebug;
+	protected float DebugAngle => debugAngle;
+	
+	public virtual int GetScore(Vector3 hitPoint, Transform centerPoint = null)
 	{
-		float distance = Vector3.Distance(hitPoint, center.position);
+		centerPoint ??= center;
+		float distance = Vector3.Distance(hitPoint, centerPoint.position);
 		int ring = (int)Mathf.Floor(distance / intervalBtwRings);
 		int score = scores[ring];
 		return score;

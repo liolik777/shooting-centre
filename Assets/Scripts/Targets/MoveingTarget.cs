@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class MoveingTarget : Target
 {
+    [SerializeField] private Transform centerHead;
+    [SerializeField] private float headIntervalBtwRings;
+    [SerializeField] private List<int> headScores;
     [SerializeField] private LeanTweenData<Transform> knockedAnimation;
     [SerializeField] private float moveingDuration;
     [SerializeField] private Transform startPosition;
@@ -9,7 +13,7 @@ public class MoveingTarget : Target
     private Vector3 targetPosition;
     private bool _isKnocked;
 	
-    public override int GetScore(Vector3 hitPoint)
+    public override int GetScore(Vector3 hitPoint, Transform centerPoint = null)
     {
         if (_isKnocked)
             return 0;
@@ -20,9 +24,24 @@ public class MoveingTarget : Target
             {
                 knockedAnimation.targetGameObject.rotation = Quaternion.Euler(knockedAnimation.targetGameObject.rotation.x, knockedAnimation.targetGameObject.rotation.y, value);
 			});
-        return base.GetScore(hitPoint);
+        
+        float distanceHead = Vector3.Distance(hitPoint, centerHead.position);
+        float distanceBody = Vector3.Distance(hitPoint, Center.position);
+
+        if (distanceHead > distanceBody)
+            return base.GetScore(hitPoint, centerHead);
+        return GetScoreOfHead(hitPoint);
     }
 
+    private int GetScoreOfHead(Vector3 hitPoint)
+    {
+        Debug.Log("Head");
+        float distance = Vector3.Distance(hitPoint, centerHead.position);
+        int ring = (int)Mathf.Floor(distance / headIntervalBtwRings);
+        int score = headScores[ring];
+        return score;
+    }
+    
     private void Start()
     {
         MoveToEnd();
@@ -54,5 +73,25 @@ public class MoveingTarget : Target
 			return;
 		
         Debug.DrawLine(startPosition.position, endPosition.position, Color.green);
+    }
+    
+    public void OnDrawGizmos()
+    {
+        if (centerHead == null || !EnableDebug)
+            return;
+		
+        int numSegments = 32;
+        float angleStep = 360f / numSegments;
+        for (int i = 0; i < headScores.Count; i++)
+        {
+            Vector3 previousPoint = centerHead.position + Quaternion.Euler(0f, DebugAngle, 0f) * Vector3.right * headIntervalBtwRings * (i + 1) - centerHead.right * 0.1f;
+            for (int j = 1; j <= numSegments; j++)
+            {
+                float angle = j * angleStep;
+                Vector3 nextPoint = centerHead.position + Quaternion.Euler(0f, DebugAngle, angle) * Vector3.right * headIntervalBtwRings * (i + 1) - centerHead.right * 0.1f;
+                Debug.DrawLine(previousPoint, nextPoint, Color.red);
+                previousPoint = nextPoint;
+            }
+        }
     }
 }
