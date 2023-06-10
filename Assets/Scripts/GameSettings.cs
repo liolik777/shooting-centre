@@ -2,20 +2,14 @@
 
 public class GameSettings : MonoBehaviour
 {
-    public static GameSettings Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new GameObject().AddComponent<GameSettings>();
-                _instance.gameSettings = Resources.Load<GameSettingsInfo>("GameSettings");
-                DontDestroyOnLoad(_instance.gameObject);
-            }
-            return _instance;
-        }
-    }
-
-    private static GameSettings _instance;
-    public GameSettingsInfo gameSettings;
+	public static GameSettingsInfo Settings
+	{
+		get
+		{
+			if (_settings == null)
+				_settings = Resources.Load<GameSettingsInfo>("GameSettings");
+			return _settings;
+		}
+	}
+    private static GameSettingsInfo _settings;
 }

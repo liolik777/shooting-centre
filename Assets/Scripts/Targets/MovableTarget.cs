@@ -3,6 +3,7 @@ using Valve.VR.InteractionSystem;
 
 public class MovableTarget : Target
 {
+    [SerializeField] private Scoreboard scoreboard;
     [SerializeField] private LinearMapping linearMapping;
     [SerializeField] private float speed;
     [SerializeField] private Transform startPosition;
@@ -12,6 +13,14 @@ public class MovableTarget : Target
     private void Update()
     {
         SmoothMove();
+    }
+
+    public override int GetScore(Vector3 hitPoint)
+    {
+        int score = base.GetScore(hitPoint);
+        if (scoreboard != null)
+            scoreboard.AddScore(score);
+        return score;
     }
 
     private void SmoothMove()

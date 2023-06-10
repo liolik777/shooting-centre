@@ -40,14 +40,14 @@ public class Weapon : MonoBehaviour
     
     private void Update()
     {
-        if (GameSettings.Instance.gameSettings.isControllerInput)
+        if (GameSettings.Settings.isControllerInput)
         {
-            if (GameSettings.Instance.gameSettings.fireAction.GetStateDown(SteamVR_Input_Sources.Any))
+            if (GameSettings.Settings.fireAction.GetStateDown(SteamVR_Input_Sources.Any))
                 StartShoot();
         }
         else
         {
-            if (Input.GetKeyDown(GameSettings.Instance.gameSettings.fireButton))
+            if (Input.GetKeyDown(GameSettings.Settings.fireButton))
                 StartShoot();
         }
 
@@ -62,7 +62,7 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator StartShooting()
     {
-        while (GameSettings.Instance.gameSettings.fireAction.GetState(SteamVR_Input_Sources.Any) || Input.GetKey(GameSettings.Instance.gameSettings.fireButton))
+        while (GameSettings.Settings.fireAction.GetState(SteamVR_Input_Sources.Any) || Input.GetKey(GameSettings.Settings.fireButton))
         {
             Shoot();
             yield return new WaitForSeconds(weaponSettings.shootingDelay);
@@ -74,7 +74,7 @@ public class Weapon : MonoBehaviour
         if (ammoText == null || _clip == null)
             return;
 
-        ammoText.text = string.Format(GameSettings.Instance.gameSettings.weaponFormatText, _clip.Ammo, _clip.MaxAmmo);
+        ammoText.text = string.Format(GameSettings.Settings.weaponFormatText, _clip.Ammo, _clip.MaxAmmo);
     }
 
     [ContextMenu("Выстрелить")]
@@ -100,12 +100,12 @@ public class Weapon : MonoBehaviour
         {
             Debug.Log("Shoot");
             UpdateUI();
-            if (GameSettings.Instance.gameSettings.shootingEffect != null)
-                Instantiate(GameSettings.Instance.gameSettings.shootingEffect, firePoint.position, firePoint.rotation);
+            if (GameSettings.Settings.shootingEffect != null)
+                Instantiate(GameSettings.Settings.shootingEffect, firePoint.position, firePoint.rotation);
             RaycastHit hit;
             if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, weaponSettings.shootingRange))
             {
-                Instantiate(GameSettings.Instance.gameSettings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
+                Instantiate(GameSettings.Settings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
                 if (hit.collider.CompareTag("Target"))
                 {
                     int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
