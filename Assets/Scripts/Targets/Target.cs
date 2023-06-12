@@ -14,12 +14,14 @@ public class Target : MonoBehaviour
 	protected bool EnableDebug => enableDebug;
 	protected float DebugAngle => debugAngle;
 	
-	public virtual int GetScore(Vector3 hitPoint, Transform centerPoint = null)
+	public virtual int GetScore(Vector3 hitPoint, Transform centerPoint = null, List<int> scoresList = null)
 	{
 		centerPoint ??= center;
+		scoresList ??= scores;
 		float distance = Vector3.Distance(hitPoint, centerPoint.position);
+		Debug.Log(distance);
 		int ring = (int)Mathf.Floor(distance / intervalBtwRings);
-		int score = scores[ring];
+		int score = scoresList[ring];
 		return score;
 	}
 	

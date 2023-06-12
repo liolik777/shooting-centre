@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using Valve.VR.InteractionSystem;
 
 public class MovableTarget : Target
@@ -15,7 +16,7 @@ public class MovableTarget : Target
         SmoothMove();
     }
 
-    public override int GetScore(Vector3 hitPoint, Transform centerPoint = null)
+    public override int GetScore(Vector3 hitPoint, Transform centerPoint = null, List<int> scoresList = null)
     {
         int score = base.GetScore(hitPoint);
         if (scoreboard != null)

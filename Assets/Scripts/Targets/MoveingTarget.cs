@@ -13,7 +13,7 @@ public class MoveingTarget : Target
     private Vector3 targetPosition;
     private bool _isKnocked;
 	
-    public override int GetScore(Vector3 hitPoint, Transform centerPoint = null)
+    public override int GetScore(Vector3 hitPoint, Transform centerPoint = null, List<int> scoresList = null)
     {
         if (_isKnocked)
             return 0;
@@ -28,18 +28,11 @@ public class MoveingTarget : Target
         float distanceHead = Vector3.Distance(hitPoint, centerHead.position);
         float distanceBody = Vector3.Distance(hitPoint, Center.position);
 
-        if (distanceHead > distanceBody)
-            return base.GetScore(hitPoint, centerHead);
-        return GetScoreOfHead(hitPoint);
-    }
+		Debug.Log(distanceHead < distanceBody);
 
-    private int GetScoreOfHead(Vector3 hitPoint)
-    {
-        Debug.Log("Head");
-        float distance = Vector3.Distance(hitPoint, centerHead.position);
-        int ring = (int)Mathf.Floor(distance / headIntervalBtwRings);
-        int score = headScores[ring];
-        return score;
+        if (distanceHead < distanceBody)
+            return base.GetScore(hitPoint, centerHead, headScores);
+        return base.GetScore(hitPoint, Center);
     }
     
     private void Start()

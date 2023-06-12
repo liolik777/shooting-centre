@@ -9,6 +9,7 @@ public enum ShootingType
     Auto
 }
 
+[ExecuteInEditMode]
 public class Weapon : MonoBehaviour
 {
     public WeaponSettings weaponSettings;
@@ -114,6 +115,21 @@ public class Weapon : MonoBehaviour
             }
         }
     }
+
+	[ContextMenu("Выстрелить2")]
+	public void Shoot2()
+	{
+		RaycastHit hit;
+		if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, weaponSettings.shootingRange))
+		{
+			Instantiate(GameSettings.Settings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
+			if (hit.collider.CompareTag("Target"))
+			{
+				int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
+				Debug.Log("Your score is: " + score);
+			}
+		}	
+	}
 
     public void OnDrawGizmos()
     {
