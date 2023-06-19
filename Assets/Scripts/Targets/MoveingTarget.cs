@@ -28,11 +28,14 @@ public class MoveingTarget : Target
         float distanceHead = Vector3.Distance(hitPoint, centerHead.position);
         float distanceBody = Vector3.Distance(hitPoint, Center.position);
 
-		Debug.Log(distanceHead < distanceBody);
-
+        int score = 0;
+        
         if (distanceHead < distanceBody)
-            return base.GetScore(hitPoint, centerHead, headScores);
-        return base.GetScore(hitPoint, Center);
+            score = base.GetScore(hitPoint, centerHead, headScores);
+        else
+            score = base.GetScore(hitPoint, Center);
+        FindObjectOfType<ToysShop>().AddBalance(score);
+        return score;
     }
     
     private void Start()

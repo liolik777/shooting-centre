@@ -11,9 +11,9 @@ public class Scoreboard : MonoBehaviour
         UpdateScoreText();
     }
     
-    public void AddScore(int score)
+    public void SetScore(int score)
     {
-        _totalScore += score;
+        _totalScore = score;
         UpdateScoreText();
     }
 	

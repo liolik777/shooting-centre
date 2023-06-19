@@ -20,7 +20,8 @@ public class MovableTarget : Target
     {
         int score = base.GetScore(hitPoint);
         if (scoreboard != null)
-            scoreboard.AddScore(score);
+            scoreboard.SetScore(score);
+        FindObjectOfType<ToysShop>().AddBalance(score);
         return score;
     }
 
