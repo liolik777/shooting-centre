@@ -9,7 +9,6 @@ public enum ShootingType
     Auto
 }
 
-[ExecuteInEditMode]
 public class Weapon : MonoBehaviour
 {
     public WeaponSettings weaponSettings;
@@ -21,11 +20,14 @@ public class Weapon : MonoBehaviour
 	public  void InjectClip(Clip clip)
 	{
 		_clip = clip;
+		ammoText.gameObject.SetActive(true);
+		UpdateUI();
 	}
 
 	public  void EjectClip()
 	{
 		_clip = null;
+		ammoText.gameObject.SetActive(false);
 	}
 
     public void DistorteShutter()

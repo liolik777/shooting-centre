@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 543887618498092545}
   - component: {fileID: 2335311714530044619}
   - component: {fileID: 4677922736107827406}
-  - component: {fileID: 5641028251380316994}
   - component: {fileID: 1458434755025513402}
   m_Layer: 0
   m_Name: StaticTarget
@@ -30,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4280757008391506718}
   m_LocalRotation: {x: -0.00020073575, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.610003, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 10}
+  m_LocalScale: {x: 80, y: 80, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4337013020690869234}
@@ -103,23 +102,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: 82bd8524d41054c4c89a04627464a2cd, type: 3}
---- !u!114 &5641028251380316994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4280757008391506718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36fbd4a7b1c31e445b0d6be8c619a48c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {fileID: 4337013020690869234}
-  intervalBtwRings: 0.11
-  scores: 090000000800000007000000060000000500000004000000030000000200000001000000
-  enableDebug: 0
-  debugAngle: 0
 --- !u!114 &1458434755025513402
 MonoBehaviour:
   m_ObjectHideFlags: 0
