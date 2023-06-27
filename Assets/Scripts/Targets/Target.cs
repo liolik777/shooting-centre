@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    [SerializeField] private Transform center;
+    public Transform center;
 	[SerializeField] private float intervalBtwRings;
 	[SerializeField] private List<int> scores;
 
@@ -19,7 +19,6 @@ public class Target : MonoBehaviour
 		centerPoint ??= center;
 		scoresList ??= scores;
 		float distance = Vector3.Distance(hitPoint, centerPoint.position);
-		Debug.Log(distance);
 		int ring = (int)Mathf.Floor(distance / intervalBtwRings);
 		int score = scoresList[ring];
 		return score;

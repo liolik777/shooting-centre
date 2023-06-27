@@ -101,7 +101,6 @@ public class Weapon : MonoBehaviour
 
         void SubShoot()
         {
-            Debug.Log("Shoot");
             UpdateUI();
             if (GameSettings.Settings.shootingEffect != null)
                 Instantiate(GameSettings.Settings.shootingEffect, firePoint.position, firePoint.rotation);
@@ -111,8 +110,7 @@ public class Weapon : MonoBehaviour
                 Instantiate(GameSettings.Settings.dentPrefab, hit.point, Quaternion.LookRotation(hit.normal)).transform.SetParent(hit.collider.transform);
                 if (hit.collider.CompareTag("Target"))
                 {
-                    int score = hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
-                    Debug.Log("Your score is: " + score);
+                    hit.collider.gameObject.GetComponent<Target>().GetScore(hit.point);
                 }
             }
         }

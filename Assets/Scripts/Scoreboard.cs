@@ -11,6 +11,11 @@ public class Scoreboard : MonoBehaviour
         UpdateScoreText();
     }
     
+	public void Limit()
+	{
+		scoreText.text = "Лимит исчерпан";
+	}
+	
     public void SetScore(int score)
     {
         _totalScore = score;

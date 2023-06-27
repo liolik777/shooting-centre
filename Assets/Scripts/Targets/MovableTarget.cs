@@ -9,7 +9,10 @@ public class MovableTarget : Target
     [SerializeField] private float speed;
     [SerializeField] private Transform startPosition;
     [SerializeField] private Transform endPosition;
+	[SerializeField] private int limitOfScore;
     private Vector3 targetPosition;
+
+	private int _totalScore;
 
     private void Update()
     {
@@ -19,8 +22,14 @@ public class MovableTarget : Target
     public override int GetScore(Vector3 hitPoint, Transform centerPoint = null, List<int> scoresList = null)
     {
         int score = base.GetScore(hitPoint);
-        if (scoreboard != null)
-            scoreboard.SetScore(score);
+		if (_totalScore >= limitOfScore)
+		{
+			scoreboard?.Limit();
+			return 0;
+		}
+		
+		_totalScore += score;
+        scoreboard?.SetScore(score);
         FindObjectOfType<ToysShop>().AddBalance(score);
         return score;
     }
