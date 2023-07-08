@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Valve.VR;
 using TMPro;
+using Valve.VR.InteractionSystem;
 
 public enum ShootingType
 {
@@ -16,6 +17,12 @@ public class Weapon : MonoBehaviour
     public TMP_Text ammoText;
     private Clip _clip;
     private bool _shutterIsDistorted;
+	private Interactable _interactable;
+
+	private void Start()
+	{
+		_interactable = GetComponent<Interactable>();
+	}
 
 	public  void InjectClip(Clip clip)
 	{
@@ -43,6 +50,9 @@ public class Weapon : MonoBehaviour
     
     private void Update()
     {
+		if (_interactable.attachedToHand == null)
+			return;
+		
         if (GameSettings.Settings.isControllerInput)
         {
             if (GameSettings.Settings.fireAction.GetStateDown(SteamVR_Input_Sources.Any))
